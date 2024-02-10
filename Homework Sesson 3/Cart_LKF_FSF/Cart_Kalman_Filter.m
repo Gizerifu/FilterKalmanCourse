@@ -8,8 +8,9 @@ close all;
 b=1; m=2; k_m=5; Ts=1e-3; L=30;
 Cart_generative_model;
 
-plot(t,x(1,:))
-hold on;
+subplot(2,1,1)
+plot(t,x(1,:),t,y)
+legend('x1 generative','y generative')
 
 Q=[w,w]*[w,w]';
 R=v^2;
@@ -51,7 +52,9 @@ for k=2:length(t)
     % end
 end
 
-plot(t,x(1,:))
+subplot(2,1,2)
+plot(t,x(1,:),t,y)
+legend('x1 update','y2 update')
 figure
 subplot(3,1,1)
 plot(t,x(1,:),'b')
