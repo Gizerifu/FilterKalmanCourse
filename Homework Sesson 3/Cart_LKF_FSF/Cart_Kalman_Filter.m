@@ -24,8 +24,8 @@ y_pred=zeros([1,length(t)]);
 x_pred(:,1)=[6,2.1]';
 
 u_c = zeros([2,length(t)]);
-k_c = [10 1];
-xDedesada = [6 0];
+k_c = [100 10];
+xDedesada = [25 0];
 %x(:,1)=[2,3];
 
 for k=2:length(t)
@@ -44,9 +44,9 @@ for k=2:length(t)
     x_est(:,k)=x_pred(:,k)+L*(y(k)-y_pred(k));
     P=P_pred-L*P_y*L';
   
-    %u_c = k_c(1)*(xDedesada(1)-x_est(1,k)) + k_c(2)*(xDedesada(2)-x_est(2,k)) 
+    u_c(k) = k_c(1)*(xDedesada(1)-x_est(1,k)) + k_c(2)*(xDedesada(2)-x_est(2,k)) ;
     
-    u_c(k) = (k_c(1)*(xDedesada(1)-y_pred(k)) + k_c(2)*(xDedesada(2)-y_pred(k)));
+    %u_c(k) = (k_c(1)*(xDedesada(1)-y_pred(k)) + k_c(2)*(xDedesada(2)-y_pred(k)));
     % if k<100
     % Q=(1-alpha)*Q+alpha*L*(y(k)-y_pred(k))*(y(k)-y_pred(k))'*L';
     % end
