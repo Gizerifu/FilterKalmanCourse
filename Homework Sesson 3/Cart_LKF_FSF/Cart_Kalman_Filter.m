@@ -8,6 +8,9 @@ close all;
 b=1; m=2; k_m=5; Ts=1e-3; L=30;
 Cart_generative_model;
 
+plot(t,x(1,:))
+hold on;
+
 Q=[w,w]*[w,w]';
 R=v^2;
 P=1e4*eye(2);
@@ -22,6 +25,7 @@ x_pred(:,1)=[6,2.1]';
 u_c = zeros([2,length(t)]);
 k_c = [10 1];
 xDedesada = [6 0];
+%x(:,1)=[2,3];
 
 for k=2:length(t)
 
@@ -47,6 +51,8 @@ for k=2:length(t)
     % end
 end
 
+plot(t,x(1,:))
+figure
 subplot(3,1,1)
 plot(t,x(1,:),'b')
 hold on
